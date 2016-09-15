@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.2.2">
-  <bpmn:process id="ReadmeProcess" name="camunda-bpm-scenario-testing" isExecutable="true">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.2.2">
+  <bpmn:process id="CommunityDay2016Process" name="Camunda BPM Community Day 2016" isExecutable="true">
     <bpmn:startEvent id="WorkStarted" name="Work started">
       <bpmn:outgoing>SequenceFlow_17725hp</bpmn:outgoing>
     </bpmn:startEvent>
@@ -24,13 +24,13 @@
       <bpmn:incoming>SequenceFlow_0e4xdbl</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0e4xdbl" sourceRef="CompleteWork" targetRef="WorkFinished" />
-    <bpmn:userTask id="RemindColleague" name="Remind colleague&#10;&#10;about work">
+    <bpmn:userTask id="RemindColleague" name="Remind colleague&#10;&#10;about work" camunda:candidateGroups="TheWaitingColleagues">
       <bpmn:incoming>SequenceFlow_1j6zemt</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1jo1im1</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ReadmeProcess">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="CommunityDay2016Process">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="WorkStarted">
         <dc:Bounds x="173" y="102" width="36" height="36" />
       </bpmndi:BPMNShape>
