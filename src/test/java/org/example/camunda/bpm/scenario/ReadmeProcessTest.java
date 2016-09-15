@@ -2,7 +2,9 @@ package org.example.camunda.bpm.scenario;
 
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.ProcessEngineRule;
+import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
 import org.camunda.bpm.scenario.ProcessScenario;
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -12,17 +14,20 @@ import static org.mockito.Mockito.*;
 @Deployment(resources = "ReadmeProcess.bpmn")
 public class ReadmeProcessTest {
 
-  @Rule
-  public ProcessEngineRule rule = new ProcessEngineRule();
+  public static final String COMMUNITY_DAY = "ReadmeProcess";
 
-  private ProcessScenario process = mock(ProcessScenario.class);
+  @Rule
+  @ClassRule
+  public static ProcessEngineRule rule = TestCoverageProcessEngineRuleBuilder.create().assertClassCoverageAtLeast(1.0).build();
+
+  public ProcessScenario process = mock(ProcessScenario.class);
 
   @Test
   public void testHappyPath() {
     when(process.waitsAtUserTask("CompleteWork")).thenReturn((task) ->
         task.complete()
     );
-    run(process).startByKey("ReadmeProcess").execute();
+    run(process).startByKey(COMMUNITY_DAY).execute();
     verify(process).hasFinished("WorkFinished");
   }
 
@@ -34,7 +39,7 @@ public class ReadmeProcessTest {
     when(process.waitsAtUserTask("RemindColleague")).thenReturn((task) ->
         task.complete()
     );
-    run(process).startByKey("ReadmeProcess").execute();
+    run(process).startByKey(COMMUNITY_DAY).execute();
     verify(process).hasFinished("WorkFinished");
     verify(process, times(2)).hasFinished("ColleagueReminded");
   }

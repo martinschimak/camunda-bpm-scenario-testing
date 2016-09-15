@@ -67,6 +67,13 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.camunda.bpm.extension</groupId>
+      <artifactId>camunda-bpm-process-test-coverage</artifactId>
+      <version>0.2.8</version>
+      <scope>test</scope>
+    </dependency>
+
     <!-- Required to use Spin dataformat support in unit tests -->
     <dependency>
       <groupId>org.camunda.spin</groupId>
@@ -101,7 +108,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
 
