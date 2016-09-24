@@ -2,8 +2,10 @@ package org.example.camunda.bpm.scenario;
 
 import org.camunda.bpm.engine.test.Deployment;
 import org.camunda.bpm.engine.test.ProcessEngineRule;
+import org.camunda.bpm.engine.test.assertions.ProcessEngineAssertions;
 import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
 import org.camunda.bpm.scenario.ProcessScenario;
+import org.camunda.bpm.scenario.Scenario;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Rule;
@@ -37,8 +39,9 @@ public class CommunityDay2016Process {
 
   @Test
   public void testHappyPath() {
-    run(process).startByKey(COMMUNITY_DAY_2016).execute(); // this is now "scenario", just execute it
+    Scenario scenario = run(process).startByKey(COMMUNITY_DAY_2016).execute(); // this is now "scenario", just execute it
     verify(process).hasFinished("WorkFinished");      // this is plain mockito, (you could use assert here, too)
+    ProcessEngineAssertions.assertThat(scenario.instance(process)).hasPassed("WorkFinished"); // does the same as the line before by means of assertions.
     verify(process, never()).hasStarted("RemindColleague");
   }
 
